@@ -11,7 +11,7 @@ import { useTelegram } from './hooks/useTelegram';
 
 
 function App() {
-  const {tg, onToggleButton} = useTelegram()
+  const {tg} = useTelegram()
 
   useEffect(() => {
     tg.ready()
