@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 
 
 
-const Header = (props) => {
+const Header = () => {
     const {onClose, user} = useTelegram()
 
 
