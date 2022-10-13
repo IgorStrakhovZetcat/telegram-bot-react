@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
 import './Form.css'
 
@@ -9,11 +9,27 @@ const Form = () => {
     const [subject, setSubject] = useState('')
     const {tg} = useTelegram()
 
+    const onSendData = useCallback(() => {
+        const data = {
+            country,
+            street,
+            subject
+        }
+        tg.sendData(JSON.stringify(data))
+    }, [country, street, subject, tg])
+
+    useEffect(() => {
+        tg.onEvent('backButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('backButtonClicked', onSendData)
+        }
+    }, [onSendData, tg])
+
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Send data'
         })
-    })
+    },[tg])
 
     useEffect(() => {
         if(!street || !country){
@@ -21,7 +37,7 @@ const Form = () => {
         } else {
             tg.MainButton.show();
         }
-    }, [country, street, tg.MainButton])
+    }, [country, street, tg])
 
     const onChangeCountry = (event) => {
         setCountry(event.target.value)
@@ -36,12 +52,12 @@ const Form = () => {
 
 
     return (
-        <div className='form'>
+        <div className={'form'}>
             <h3>Fill out fields</h3>
-            <input className='input' type={'text'} placeholder={'Country'} value={country} onChange={onChangeCountry}/>
-            <input className='input' type={'text'} placeholder={'Street'} value={street} onChange={onChangeStreet}/>
+            <input className={'input'} type={'text'} placeholder={'Country'} value={country} onChange={onChangeCountry}/>
+            <input className={'input'} type={'text'} placeholder={'Street'} value={street} onChange={onChangeStreet}/>
 
-            <select className='select' value={subject} onChange={onChangeSubject}>
+            <select className={'select'} value={subject} onChange={onChangeSubject}>
                 <option value={'physical'}>Physical person</option>
                 <option value={'legal'}>Legal entity</option>
             </select>
