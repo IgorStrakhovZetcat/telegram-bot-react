@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ProductItem from '../ProductItem/ProductItem';
 import './ProductList.css'
 import {useTelegram} from '../../hooks/useTelegram'
+
 
 
 const products = [
@@ -15,7 +16,7 @@ const products = [
     {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая'},
 ]
 
-const getTotalPrice = (items = []) => {
+const getTotalCost = (items = []) => {
     return items.reduce((acc, item) => {
         return acc += item.price
     }, 0)
@@ -23,7 +24,33 @@ const getTotalPrice = (items = []) => {
 
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([])
-    const {tg} = useTelegram()
+    const {tg, queryId} = useTelegram()
+
+
+    const onSendData = useCallback(() => {
+        const data = {
+            products: addedItems,
+            totalCost: getTotalCost(addedItems),
+            queryId
+        }
+        fetch('http://localhost8000', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'aplication/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }, [addedItems])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData, tg])
+
+
+
     const onAdd = (product) => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
@@ -41,7 +68,7 @@ const ProductList = () => {
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Buy ${getTotalPrice(newItems)}`
+                text: `Buy ${getTotalCost(newItems)}`
             })
         }
     }
