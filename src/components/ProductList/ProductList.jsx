@@ -10,20 +10,20 @@ import b5 from '../Images/Burgers/b5.jpg'
 
 
 const products = [
-    {id: '1', title: 'Burger1', cost: 5000, img: b1},
-    {id: '2', title: 'Burger2', cost: 12000, img: b2},
-    {id: '3', title: 'Burger3', cost: 5000, img: b3},
-    {id: '4', title: 'French fries', cost: 122, img: b4},
-    {id: '8', title: 'Rustic potatoes', cost: 12000, img: b5},
-    {id: '5', title: 'Coca-Cola', cost: 5000, img: b1},
-    {id: '6', title: 'Sprite', cost: 600, img: b1},
+    {id: '1', title: 'Burger1', cost: 20, img: b1},
+    {id: '2', title: 'Burger2', cost: 15, img: b2},
+    {id: '3', title: 'Burger3', cost: 24, img: b3},
+    {id: '4', title: 'French fries', cost: 30, img: b4},
+    {id: '8', title: 'Rustic potatoes', cost: 10, img: b5},
+    {id: '5', title: 'Coca-Cola', cost: 50, img: b1},
+    {id: '6', title: 'Sprite', cost: 60, img: b1},
     // {id: '7', title: 'Джинсы 4', price: 5500},
     
 ]
 
 const getTotalCost = (items = []) => {
     return items.reduce((acc, item) => {
-        return acc += item.price
+        return acc += item.cost
     }, 0)
 }
 
