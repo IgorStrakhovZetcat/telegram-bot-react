@@ -2,17 +2,21 @@ import { useCallback, useEffect, useState } from 'react';
 import ProductItem from '../ProductItem/ProductItem';
 import './ProductList.css'
 import {useTelegram} from '../../hooks/useTelegram'
-
+import b1 from '../Images/Burgers/b1.jpg'
+import b2 from '../Images/Burgers/b2.jpg'
+import b3 from '../Images/Burgers/b3.jpg'
+import b4 from '../Images/Burgers/b4.jpg'
+import b5 from '../Images/Burgers/b5.jpg'
 
 
 const products = [
-    {id: '1', title: 'Burger1', cost: 5000},
-    {id: '2', title: 'Burger2', cost: 12000},
-    {id: '3', title: 'Burger3', cost: 5000},
-    {id: '4', title: 'French fries', cost: 122},
-    {id: '8', title: 'Rustic potatoes', cost: 12000},
-    {id: '5', title: 'Coca-Cola', cost: 5000},
-    {id: '6', title: 'Sprite', cost: 600},
+    {id: '1', title: 'Burger1', cost: 5000, img: b1},
+    {id: '2', title: 'Burger2', cost: 12000, img: b2},
+    {id: '3', title: 'Burger3', cost: 5000, img: b3},
+    {id: '4', title: 'French fries', cost: 122, img: b4},
+    {id: '8', title: 'Rustic potatoes', cost: 12000, img: b5},
+    {id: '5', title: 'Coca-Cola', cost: 5000, img: b1},
+    {id: '6', title: 'Sprite', cost: 600, img: b1},
     // {id: '7', title: 'Джинсы 4', price: 5500},
     
 ]
