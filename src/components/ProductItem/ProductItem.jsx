@@ -12,9 +12,7 @@ const ProductItem = ({ product, className, onAdd }) => {
         <div className={'product' + className}>
             <img className="img" src={product.img} alt={product.img} />
             
-                <div className="title">{product.title} <div className="price">
-                    <b>{product.cost}$</b>
-                </div> </div>
+                <div className="title">{product.title}   <b>{product.cost}$</b></div>
                 
             
 
