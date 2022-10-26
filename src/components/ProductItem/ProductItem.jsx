@@ -15,7 +15,7 @@ const ProductItem = ({product, className, onAdd}) => {
             <div className="title">{product.title}</div>
             {/* <div className="description">{product.description}</div> */}
             <div className="price">
-                <span>Cost: <b>{product.cost}</b></span>
+                <b>{product.cost}</b>
             </div>
             <Button className='add-btn' onClick={addToCart}>
                 Add

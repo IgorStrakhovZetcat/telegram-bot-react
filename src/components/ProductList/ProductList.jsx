@@ -6,13 +6,13 @@ import {useTelegram} from '../../hooks/useTelegram'
 
 
 const products = [
-    {id: '1', title: 'Burger1', price: 5000},
-    {id: '2', title: 'Burger2', price: 12000},
-    {id: '3', title: 'Burger3', price: 5000},
-    {id: '4', title: 'French fries', price: 122},
-    {id: '8', title: 'Rustic potatoes', price: 12000},
-    {id: '5', title: 'Coca-Cola', price: 5000},
-    {id: '6', title: 'Sprite', price: 600},
+    {id: '1', title: 'Burger1', cost: 5000},
+    {id: '2', title: 'Burger2', cost: 12000},
+    {id: '3', title: 'Burger3', cost: 5000},
+    {id: '4', title: 'French fries', cost: 122},
+    {id: '8', title: 'Rustic potatoes', cost: 12000},
+    {id: '5', title: 'Coca-Cola', cost: 5000},
+    {id: '6', title: 'Sprite', cost: 600},
     // {id: '7', title: 'Джинсы 4', price: 5500},
     
 ]
