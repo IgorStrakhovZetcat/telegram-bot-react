@@ -5,8 +5,11 @@ import { useState } from 'react'
 
 const ProductItem = ({ product, className, onAdd }) => {
     const [addOrDelete, setAddOrDelete] = useState('Add')
+    const productsInCart = []
     const addToCart = () => {
+    
         onAdd(product)
+ 
         setAddOrDelete('Delete')
     }
 
@@ -15,13 +18,8 @@ const ProductItem = ({ product, className, onAdd }) => {
         <div className={'product'}>
             <img className="img" src={product.img} alt={product.img} />
             
-                <div className="title">{product.title} <b>{product.cost}$</b></div>
+            <div className="title">{product.title} <b>{product.cost}$</b></div>
                 
-            
-
-
-
-            {/* <div className="description">{product.description}</div> */}
 
             <Button className='add-btn' onClick={addToCart}>
                 {addOrDelete}

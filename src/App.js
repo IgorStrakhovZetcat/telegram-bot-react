@@ -25,6 +25,7 @@ function App() {
       <Routes>
         <Route index element={<ProductList/>}/>
         <Route path='form' element={<Form/>}/>
+        {/* <Route path='drinks' element={<Drinks/>}/> */}
       </Routes>
     </div>
   );
